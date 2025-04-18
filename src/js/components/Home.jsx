@@ -1,27 +1,42 @@
 import React from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import { NavBar } from "./Navbar";
+import { Jumbotron } from "./Jumbotron";
+import { Cards } from "./Cards";
 
+const services = [
+	{
+		image: '/workspaces/landing-page-mroblesa/src/img/dogvolton.jpeg',
+		title: 'Guarderia',
+		description: 'Servicio de guarderia para tu peludito de lunes a viernes, tenemos diferentes planes disponibles'
+	},
+	{
+		title: 'Hotel',
+		description: 'Servicio de hotel para tu peludito, cuando no lo puedas llevar en Dogvolton puede disfrutar'
+	},
+	{
+		title: 'Baño y Peluqueria',
+		description: 'Servicio de grooming para que tu peludito luzca su mejor versión'
+	},
+	{
+		title: 'Pasadias',
+		description: 'Planes diarios para que tu peludito pueda disfrutar de nuestras actividades'
+	}
+]
 //create your first component
 const Home = () => {
 	return (
-		<div className="text-center">
-            
-
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
+		<>
+		<NavBar/>
+		<Jumbotron/>
+		{
+			services.map((element, index)=>{
+			return (
+				<Cards key={index} image={element.image} title={element.title} description={element.description}/>
+			)	
+			})
+		};
+		</>
 	);
 };
 
